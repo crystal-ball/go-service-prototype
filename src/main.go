@@ -29,7 +29,7 @@ func main() {
 	// Run our server in a goroutine so that it doesn't block.
 	go func() {
 		if err := srv.ListenAndServe(); err != nil {
-			log.Panicln(err)
+			log.Println(err)
 		}
 	}()
 
@@ -42,6 +42,7 @@ func main() {
 	// Block until we receive our signal.
 	<-c
 
+	// Create a deadline to wait for.
 	ctx, cancel := context.WithTimeout(context.Background(), wait)
 	defer cancel()
 
