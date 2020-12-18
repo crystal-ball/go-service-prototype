@@ -1,5 +1,5 @@
-module github.com/crystal-ball/go-service-prototype
+module go-service-prototype
 
-go 1.12
+go 1.15
 
-require github.com/julienschmidt/httprouter v1.3.0
+require github.com/gorilla/mux v1.8.0 // indirect
