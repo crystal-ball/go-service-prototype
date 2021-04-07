@@ -5,6 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+
+	"go-service-prototype/src/routes"
 )
 
 func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
@@ -19,8 +21,8 @@ func InitRouter() *mux.Router {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/health", healthCheckHandler)
-	// router.GET("/", Index)
-	// router.GET("/hello/:name", Hello)
+	router.HandleFunc("/", routes.Index)
+	router.HandleFunc("/hello/{name}", routes.Hello)
 
 	return router
 }
