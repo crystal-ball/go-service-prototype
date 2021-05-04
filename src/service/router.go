@@ -13,10 +13,17 @@ func InitRouter() *mux.Router {
 
 	router.HandleFunc("/healthcheck", routes.Healthcheck)
 
-	router.HandleFunc("/account/create", routes.CreateAccount)
-	router.HandleFunc("/account", routes.GetAccount)
+	router.HandleFunc("/user/account", routes.GetAccount).Methods("GET")
+	router.HandleFunc("/user/account", routes.CreateAccount).Methods("POST")
 
-	router.HandleFunc("/auth/login", routes.LoginAccount)
+	router.HandleFunc("/auth/signin", routes.LoginAccount).Methods("POST")
+	router.HandleFunc("/auth/signout", routes.LoginAccount).Methods("POST")
+
+	router.HandleFunc("/projects", routes.ListProjects).Methods("GET")
+	router.HandleFunc("/projects/{projectID}", routes.GetProject).Methods("GET")
+	router.HandleFunc("/projects/{projectID}", routes.CreateProject).Methods("POST")
+	router.HandleFunc("/projects/{projectID}", routes.UpdateProject).Methods("PUT")
+	router.HandleFunc("/projects/{projectID}", routes.DeleteProject).Methods("DELETE")
 
 	// --- Middleware
 
