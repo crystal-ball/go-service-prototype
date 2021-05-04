@@ -1,1 +1,4 @@
-go-service-prototype
+# --- Ignore ---
+
+# Build output
+bin/go-service-prototype
